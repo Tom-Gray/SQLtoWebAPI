@@ -22,14 +22,14 @@ http.createServer(function(req, res) {
             }
         break;
         case "POST":
-            if (req.url === "/employees"){
+            if (req.url === "/employees/"){
                 var reqBody = "";
                 req.on("data", function(data){
                     reqBody += data;
-                    if (req.body.length > 1e7) //if receive more than 10mb, send error
-                    {
-                        httpMsgs.show500
-                    }
+                   // if (req.body.length > 1e7) //if receive more than 10mb, send error
+                    //{
+                      //  httpMsgs.show500
+                    //}
                 });
                 req.on("end", function(){
                     emp.add(req, res, reqBody);

@@ -7,4 +7,4 @@ exports.dbConfig = {
 
 exports.webPort = 9000;
 
-exports.httpMsgFormat = "JSON";
+exports.httpMsgFormat = "JSON"; //Other option HTML

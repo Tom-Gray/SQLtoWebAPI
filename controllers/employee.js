@@ -35,8 +35,11 @@ exports.add = function (req, res, reqBody) {
         if (!reqBody) throw new Error("Input not valid");
         var data = JSON.parse(reqBody);
         if (data) {
+            console.log(reqBody);
+            console.log(data);
             var sql = "INSERT INTO status (Lawyer, Matter, Client, Description, Status) VALUES";
-            sql += util.format("(%s, %s, %s, %s, %s)", data.Lawyer, data.Matter, data.client, data.description, data.status);
+            sql += util.format("('%s', '%s', '%s', '%s', '%s')", data.Lawyer, data.Matter, data.Client, data.description, data.Status);
+            console.log(sql);
             db.executeSQL(sql, function (data, err) {
                 if (err) {
                     httpMsgs.show500(req, res, err);

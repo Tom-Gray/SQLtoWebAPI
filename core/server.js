@@ -26,10 +26,7 @@ http.createServer(function(req, res) {
                 var reqBody = "";
                 req.on("data", function(data){
                     reqBody += data;
-                   // if (req.body.length > 1e7) //if receive more than 10mb, send error
-                    //{
-                      //  httpMsgs.show500
-                    //}
+
                 });
                 req.on("end", function(){
                     emp.add(req, res, reqBody);
@@ -40,16 +37,30 @@ http.createServer(function(req, res) {
             }
         break;
         case "PUT":
-        if (req.url === "/employees"){
-                
+        if (req.url === "/employees/"){
+                var reqBody = "";
+                req.on("data", function(data){
+                    reqBody += data;
+
+                });
+                req.on("end", function(){
+                    emp.update(req, res, reqBody);
+                });
             }
             else {
                 httpMsgs.show404(req, res);
             }
         break;
         case "DELETE":
-        if (req.url === "/employees"){
-                
+        if (req.url === "/employees/"){
+                var reqBody = "";
+                req.on("data", function(data){
+                    reqBody += data;
+
+                });
+                req.on("end", function(){
+                    emp.delete(req, res, reqBody);
+                });
             }
             else {
                 httpMsgs.show404(req, res);

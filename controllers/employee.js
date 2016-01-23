@@ -38,7 +38,7 @@ exports.add = function (req, res, reqBody) {
             console.log(reqBody);
             console.log(data);
             var sql = "INSERT INTO status (Lawyer, Matter, Client, Description, Status) VALUES";
-            sql += util.format("('%s', '%s', '%s', '%s', '%s')", data.Lawyer, data.Matter, data.Client, data.description, data.Status);
+            sql += util.format("('%s', '%s', '%s', '%s', '%s')", data.Lawyer, data.Matter, data.Client, data.description, data.Status); //mixed capitilisation here is important. fix it!
             console.log(sql);
             db.executeSQL(sql, function (data, err) {
                 if (err) {

@@ -8,16 +8,17 @@ http.createServer(function(req, res) {
         case "GET":
             if (req.url === "/") {
                 httpMsgs.showHome(req, res);
-                res.end(); //send index file or something.
+                res.end(); //send index.html file or something.
             }
-            else if (req.url === "/employees") {
+            else if (req.url === "/employees" || req.url === "/employees/") {
                 emp.getList(req, res);
             }
             else {
                 var empPattern = "[0-9]+"; //regex to validate shit
                 var patt = new RegExp("/employees/" + empPattern);
                 if (patt.test(req.url)) {
-                    
+                    emp.get(req, res);  
+                                      
                 }
             }
         break;

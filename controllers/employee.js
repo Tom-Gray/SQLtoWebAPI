@@ -17,7 +17,7 @@ exports.getList = function (req, res) {
 };
 
 exports.get = function (req, res, empno) {
-    db.executeSQL("SELECT * FROM status WHERE lawyer=" + empno, function (data, err) {
+    db.executeSQL("SELECT * FROM status WHERE matter = '" + empno + "'", function (data, err) {
         if (err) {
             httpMsgs.show500(req, res, err);
         }

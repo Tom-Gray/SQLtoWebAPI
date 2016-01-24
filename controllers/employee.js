@@ -91,11 +91,40 @@ exports.update = function (req, res, reqBody) {
 
     }
     catch (ex) {
-        httpMsgs.show500(req, res, ex);
+        httpMsgs.show500(req, res, ex);        
     }
 
 };
 
 exports.delete = function (req, res, reqBody) {
+    try {
+        if (!reqBody) throw new Error("Input not valid");
+        var data = JSON.parse(reqBody);
+        console.log(data)
+        if (data) {
+            if (!data.Matter) throw new Error("Matter No Not Provided");
+
+            var sql = "DELETE FROM status ";
+
+            var isDataProvided = false;
+           
+            sql += " WHERE Matter = '" + data.Matter + "'";
+            console.log(sql);
+
+            db.executeSQL(sql, function (data, err) {
+                if (err) {
+                    httpMsgs.show500(req, res, err);
+                }
+                else {
+                    httpMsgs.send200(req, res);
+                }
+            });
+        }
+        else throw new Error("Input Not Valid");
+
+    }
+    catch (ex) {
+        httpMsgs.show500(req, res, ex);        
+    }
 
 };

@@ -73,8 +73,9 @@ exports.update = function (req, res, reqBody) {
                 sql += " status = '" + data.Status + "'";
                 isDataProvided = true;
             }
+            console.log(sql)
 
-            sql = + " WHERE matter = " + data.Matter;
+            sql += " WHERE Matter = '" + data.Matter + "'";
             console.log(sql);
 
             db.executeSQL(sql, function (data, err) {
@@ -82,7 +83,7 @@ exports.update = function (req, res, reqBody) {
                     httpMsgs.show500(req, res, err);
                 }
                 else {
-                    httpMsgs.show200(req, res);
+                    httpMsgs.send200(req, res);
                 }
             });
         }

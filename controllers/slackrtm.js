@@ -1,6 +1,4 @@
 //
-
-exports.slackBot = function(){
 var token = require('../token');
 var Botkit = require('Botkit');
 
@@ -20,5 +18,4 @@ var bot = controller.spawn(token.tokenstring).startRTM();
         dm.say('Private reply!');
     })
 
-})
-};
+});

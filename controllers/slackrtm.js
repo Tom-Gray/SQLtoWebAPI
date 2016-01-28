@@ -31,7 +31,7 @@ var bot = controller.spawn(token.tokenstring).startRTM();
 
 });
 
-controller.hears(['update'],['ambient'],function(bot,message) {
+controller.hears(['GoGoUpdate'],['ambient'],function(bot,message) {
   bot.startConversation(message, askFlavor);
 });
 

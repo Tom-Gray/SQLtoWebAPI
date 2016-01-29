@@ -1,7 +1,7 @@
 <html ng-app="statusApp">
   <head>
     <meta charset="utf-8">
-    <title>Angular.js JSON Fetching Example</title>
+    <title>JSON Fetch</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
     <script>
@@ -23,12 +23,14 @@
 		<th>Client</th>
         <th>Matter</th>
         <th>Status</th>
+        <th></th>
       </tr>
       <tr ng-repeat="country in countries | orderBy: 'code' ">
         <td>{{country.Lawyer}}:{{country.Matter}}</td>
 		<td>{{country.Client}}</td>
         <td>{{country.description}}</td>
         <td>{{country.Status}}</td>
+        <td>EDIT</td>
       </tr>
     </table>
     </div>

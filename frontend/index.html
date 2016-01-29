@@ -1,55 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>1B Status</title>
-    <!-- FOR ANGULAR ROUTING -->
-    <base href="/">
-
-    <script>document.write('<base href="' + document.location + '" />');</script>
-    <link rel="stylesheet" href="style.css" />
-    <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.8/angular.js" data-semver="1.4.8"></script>
-    <script src="/service.js"></script>
-    <!-- CSS -->
-    <!-- load bootstrap from CDN and custom CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.1/paper/\
-bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.\
-
-<div class=" page-header ">
-    <h1>
-Matters
-<a href="/employees/create " class="btn btn-default ">
-<span class="glyphicon glyphicon-plus "></span>
-New Matter
-</a>
-</h1>
-</div>
-
-<table class="table table-bordered table-striped " ng-show="user.users ">
-    <thead>
-        <tr>
-            <th>MatterNo</th>
-            <th>Lawyer</th>
-            <th>Client</th>
-            <th>Description</th>
-            <th>Status</th>
-            
-            <th class="col-sm-2 "></th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- LOOP OVER THE USERS -->
-        <tr ng-repeat="person in user.users ">
-            <td>{{ person.matter }}</td>
-            <td>{{ person.lawyer }}</td>
-            <td>{{ person.client }}</td>
-            <td>{{ person.description }}</td>
-            <td>{{ person.status }}</td>
-            <td class="col-sm-2 ">
-                <a ng-href="/employees/{{ person._id }} " class="btn btn-danger ">Edit</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<html ng-app="statusApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular.js JSON Fetching Example</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script>
+      var countryApp = angular.module('statusApp', []);
+      countryApp.controller('CountryCtrl', function ($scope, $http){
+        $http.get('http://localhost:9000/employees/').success(function(data) {
+          $scope.countries = data;
+        });
+      });
+    </script>
+  </head>
+  <body ng-controller="CountryCtrl">
+	<h2>Angular.js JSON Fetching Example</h2>
+    <table>
+      <tr>
+        <th>Matter</th>
+		<th>Lawyer</th>
+        <th>Status</th>
+      </tr>
+      <tr ng-repeat="country in countries | orderBy: 'code' ">
+        <td>{{country.Matter}}</td>
+		<td>{{country.Lawyer}}</td>
+        <td>{{country.Status}}</td>
+      </tr>
+    </table>
+  </body>
+</html>

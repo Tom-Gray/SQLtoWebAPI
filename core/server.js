@@ -11,6 +11,7 @@ http.createServer(function(req, res) {
                 res.end(); //send index.html file or something.
             }
             else if (req.url === "/employees" || req.url === "/employees/") {
+                res.setHeader('Access-Control-Allow-Origin', '*');
                 emp.getList(req, res);
             }
             else {

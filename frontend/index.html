@@ -14,18 +14,24 @@
     </script>
   </head>
   <body ng-controller="CountryCtrl">
-	<h2>Angular.js JSON Fetching Example</h2>
-    <table>
+      <div class="col-md-2"></div>
+       <div class="col-md-8">
+	<h2>Matters</h2>
+    <table class="table table-striped">
       <tr>
+        <th>No.</th>
+		<th>Client</th>
         <th>Matter</th>
-		<th>Lawyer</th>
         <th>Status</th>
       </tr>
       <tr ng-repeat="country in countries | orderBy: 'code' ">
-        <td>{{country.Matter}}</td>
-		<td>{{country.Lawyer}}</td>
+        <td>{{country.Lawyer}}:{{country.Matter}}</td>
+		<td>{{country.Client}}</td>
+        <td>{{country.description}}</td>
         <td>{{country.Status}}</td>
       </tr>
     </table>
+    </div>
   </body>
 </html>
+

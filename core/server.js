@@ -15,10 +15,13 @@ http.createServer(function(req, res) {
                 emp.getList(req, res);
             }
             else {
-                var empPattern = "[0-9]+"; //regex to validate shit
+                var empPattern = "[\\d{8}]"; //regex to validate shit
                 var patt = new RegExp("/employees/" + empPattern);
                 if (patt.test(req.url)) {
-                    emp.get(req, res);  
+                     res.setHeader('Access-Control-Allow-Origin', '*'); 
+                     empno = (req.url).substring(11)
+                     console.log(empno)
+                    emp.get(req, res, empno);  
                                       
                 }
             }

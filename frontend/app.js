@@ -4,3 +4,5 @@ var countryApp = angular.module('statusApp', []);
           $scope.countries = data;
         });
       });
+      
+      

@@ -4,13 +4,8 @@
     <title>JSON Fetch</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-    <script>
-      var countryApp = angular.module('statusApp', []);
-      countryApp.controller('CountryCtrl', function ($scope, $http){
-        $http.get('http://localhost:9000/employees/').success(function(data) {
-          $scope.countries = data;
-        });
-      });
+    <script src="app.js">
+      
     </script>
   </head>
   <body ng-controller="CountryCtrl">

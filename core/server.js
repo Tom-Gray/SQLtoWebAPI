@@ -1,8 +1,8 @@
 var http = require('http');
 var emp = require('../controllers/employee');
 var httpMsgs = require("./httpmessages");
-
 var settings = require('../settings');
+
 http.createServer(function(req, res) {
     switch (req.method) {
         case "GET":

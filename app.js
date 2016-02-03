@@ -1,2 +1,2 @@
 require("./core/server");
-require("./controllers/slackrtm") //start slackbotRTM
+require("./controllers/slackrtm") //start slackbotRTM.

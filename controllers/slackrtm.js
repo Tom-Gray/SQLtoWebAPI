@@ -19,7 +19,7 @@ var bot = controller.spawn(token.tokenstring).startRTM();
        
         var empno = "";
         empno = message.text //validate this first
-        slack.slackGet(empno, callback);
+        slack.slackGet(empno);
        console.log("response is "+ response);
          
     bot.startConversation(message, function (err, convo) {

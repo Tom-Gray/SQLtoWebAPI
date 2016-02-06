@@ -36,18 +36,24 @@ controller.hears(pattern, 'direct_message,direct_mention,mention', function (bot
             var parsed = JSON.parse(body);
 
             console.log(parsed);
-            var recordClient = (parsed[0].Client);
-            var recordMatter = console.log(parsed[0].Matter);
+            var recordClient = parsed[0].Client;
+            var recordMatter = parsed[0].Matter;
             var recordDescription = (parsed[0].description);
             var recordStatus = (parsed[0].Status);
 
         }
 
-    })
 
-    bot.startConversation(message, function (err, convo) {
+ bot.startConversation(message, function (err, convo) {
         convo.say('Whats your update for matter ' + recordMatter + '?');
     });
+    
+
+    })
+
+    //bot.startConversation(message, function (err, convo) {
+      //  convo.say('Whats your update for matter ' + recordMatter + '?');
+    //});
 
     bot.startPrivateConversation(message, function (err, dm) {
         // dm.say('Private reply!');

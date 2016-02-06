@@ -22,19 +22,3 @@ exports.slackGet = function (empno) {
 
 
 
-
-//same thing but using request:
-
-var request = require("request");
-
-var url = "http://localhost:9000" + empno
-
-    request.get(url, function (error, response, body) {
-        if (error) {
-            console.log(error);
-        }
-        else {
-            console.log(response);
-        }
-
-    });

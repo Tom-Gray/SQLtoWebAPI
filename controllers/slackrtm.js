@@ -46,11 +46,8 @@ controller.hears(pattern, 'direct_message,direct_mention,mention', function (bot
 
 
         bot.startConversation(message, function (err, convo) {
-            convo.say('Whats your update for matter ' + recordMatter + '?');
-            convo.say('>Client is ' + recordClient);
-            convo.say('>Matter:' + recordDescription);
-            convo.say('>Current Status: ' + recordStatus);
-            convo.say('Whats the status for this matter?')
+            convo.say('```Client: ' + recordClient + "\nMatter: " + recordDescription + "\nCurrent Status: " + recordStatus + "```");
+            convo.say('Whats the latest status for this matter?')
         });
 
 

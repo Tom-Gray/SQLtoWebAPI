@@ -29,7 +29,6 @@ var request = require("request");
 
 var url = "http://localhost:9000" + empno
 
-exports.slackRequest = function (empno, response) {
     request.get(url, function (error, response, body) {
         if (error) {
             console.log(error);

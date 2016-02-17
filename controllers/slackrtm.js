@@ -47,10 +47,39 @@ controller.hears(pattern, 'direct_message,direct_mention,mention', function (bot
 
         bot.startConversation(message, function (err, convo) {
             convo.say('```Client: ' + recordClient + "\nMatter: " + recordDescription + "\nCurrent Status: " + recordStatus + "```");
-            convo.ask('Whats the latest status for this matter?', function(response, convo){
-                varMatter = response.text;
-                convo.say("No worries. The status of *" + recordMatter + "* is now " + varMatter);
-                convo.next();
+            convo.ask('Whats the latest status for this matter?', function (response, convo) {
+                varStatus = response.text;
+
+
+
+
+
+
+                request({
+                    url: 'http://localhost:9000/employees/', //URL to hit
+    
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    json: {
+                        Matter:   recordMatter,
+                        Status:  varStatus
+                    }
+
+                }, function (error, response, body) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log(response.statusCode, body);
+                        convo.say("No worries. The status of *" + recordMatter + "* is now " + varStatus);
+                        convo.next();
+                    }
+                });
+
+
+               // convo.say("No worries. The status of *" + recordMatter + "* is now " + varStatus);
+               // convo.next();
             })
         });
 
